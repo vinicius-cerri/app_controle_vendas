@@ -1,0 +1,68 @@
+<LoginPage>:
+    FloatLayout:
+        # Imagem do Plano de Fundo
+        canvas:
+            Rectangle:
+                # Colocar na Tela Inteira
+                size: self.size
+                pos: self.pos
+                source: "icones/bg1.png"
+
+        # Texto Controle de Vendas
+        Label:
+            pos_hint: {"right": 0.9, "top": 0.9}
+            size_hint: 0.8, 0.2
+            text: "CONTROLE DE [color=#00CFDB]VENDAS HASHTAG[/color]"
+            bold: True
+            markup: True
+        
+        # Caixa E-mail
+        TextInput:
+            id: email
+            hint_text: "E-mail"
+            pos_hint: {"right": 0.9, "top": 0.7}
+            size_hint: 0.8, 0.1
+        
+        # Caixa Senha
+        TextInput:
+            id: senha
+            password: True
+            hint_text: "Senha"
+            pos_hint: {"right": 0.9, "top": 0.55}
+            size_hint: 0.8, 0.1
+        
+        # Texto Avisos
+        Label:
+            id: mensagem_login
+            text: "[color=#00CFDB]Faça seu Login[/color]"
+            bold: True
+            markup: True
+            pos_hint: {"right": 0.9, "top": 0.4}
+            size_hint: 0.8, 0.1
+
+        # Botão Fazer Login
+        LabelButton:
+            on_release: app.firebase.fazer_login(email.text, senha.text)
+            text: "Faça seu Login"
+            pos_hint: {"right": 0.45, "top": 0.3}
+            size_hint: 0.4, 0.2
+            # Imagem do Plano de Fundo
+            canvas.before: 
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+                    source: "icones/botao.png" if self.state == "normal" else "icones/botao_apertado.png"
+                    # Serve para Deixar a Imagem do Botão de Maneira Dinâmica (se ele foi clicado ou não)
+
+        # Botão Criar Conta
+        LabelButton:
+            on_release: app.firebase.criar_conta(email.text, senha.text)
+            text: "Criar Conta"
+            pos_hint: {"right": 0.95, "top": 0.3}
+            size_hint: 0.4, 0.2
+            # Imagem do Plano de Fundo
+            canvas.before: 
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+                    source: "icones/botao.png" if self.state == "normal" else "icones/botao_apertado.png"

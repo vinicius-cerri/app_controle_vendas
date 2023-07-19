@@ -1,0 +1,67 @@
+<AdicionarVendedorPage>:
+    FloatLayout:
+        # Imagem do Plano de Fundo
+        canvas:
+            Rectangle:
+                # Colocar na Tela Inteira
+                size: self.size
+                pos: self.pos
+                source: "icones/bg1.png"
+        
+        # Texto Adicionar Vendedor
+        Label:
+            pos_hint: {"right": 0.9, "top": 0.8}
+            size_hint: 0.8, 0.1
+            bold: True
+            text: "Insira o [color=#00CFDB]ID de outro vendedor[/color] para acompanhá-lo"
+            markup: True
+
+        # Botão Adicionar Vendedor
+        LabelButton:
+            on_release: app.adicionar_vendedor(id_outro_vendedor.text)
+            text: "Adicionar Vendedor"
+            pos_hint: {"right": 0.9, "top": 0.55}
+            size_hint: 0.8, 0.2
+            # Imagem do Plano de Fundo
+            canvas.before: 
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+                    source: "icones/botao.png" if self.state == "normal" else "icones/botao_apertado.png"
+
+        # Caixa ID Vendedor
+        TextInput:
+            id: id_outro_vendedor
+            hint_text: "123"
+            pos_hint: {"right": 0.9, "top": 0.7}
+            size_hint: 0.8, 0.1
+        
+        # Texto Mensagem de Aviso
+        Label:
+            text: ""
+            markup: True
+            bold: True
+            pos_hint: {"right": 0.9, "top": 0.4}
+            size_hint: 0.8, 0.1
+            id: mensagem_outro_vendedor
+
+        # Barra Inferior da Tela
+        FloatLayout:
+            pos_hint: {"right": 1, "top": 0.12}
+            size_hint: 1, 0.12
+
+            # Cor do Plano de Fundo
+            canvas:
+                Color:
+                    rgb: utils.get_color_from_hex("#006D7E")
+                Rectangle:
+                    # Colocar na Tela Inteira
+                    size: self.size
+                    pos: self.pos
+                    
+            # Botão Voltar
+            ImageButton:
+                pos_hint: {"right": 0.2, "top": 0.9}
+                size_hint: 0.2, 0.8
+                source: "icones/voltar.png"
+                on_release: app.mudar_tela("ajustespage")

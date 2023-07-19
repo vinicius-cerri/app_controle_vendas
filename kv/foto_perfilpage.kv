@@ -1,0 +1,50 @@
+<FotoPerfilPage>:
+    FloatLayout:
+        # Imagem do Plano de Fundo
+        canvas:
+            Rectangle:
+                # Colocar na Tela Inteira
+                size: self.size
+                pos: self.pos
+                source: "icones/bg1.png"
+
+        # Texto Foto Perfil Page
+        Label:
+            pos_hint: {"right": 0.85, "top": 0.95}
+            size_hint: 0.7, 0.1
+            bold: True
+            text: "Selecione sua Foto de Perfil"
+        
+        # Lista Fotos de Perfil
+        ScrollView:
+            pos_hint: {"right": 0.9, "top": 0.85}
+            size_hint: 0.8, 0.73
+            GridLayout:
+                cols: 3
+                id: lista_fotos_perfil
+                size_hint_y: None
+                spacing: 5, 5
+                height: self.minimum_height
+                row_default_height: "90dp"
+                row_force_default: True
+
+        # Barra Inferior da Tela
+        FloatLayout:
+            pos_hint: {"right": 1, "top": 0.12}
+            size_hint: 1, 0.12
+
+            # Cor do Plano de Fundo
+            canvas:
+                Color:
+                    rgb: utils.get_color_from_hex("#006D7E")
+                Rectangle:
+                    # Colocar na Tela Inteira
+                    size: self.size
+                    pos: self.pos
+                    
+            # Botão Voltar
+            ImageButton:
+                pos_hint: {"right": 0.2, "top": 0.9}
+                size_hint: 0.2, 0.8
+                source: "icones/voltar.png"
+                on_release: app.mudar_tela("ajustespage")

@@ -1,0 +1,87 @@
+<AjustesPage>:
+    FloatLayout:
+        # Imagem do Plano de Fundo
+        canvas:
+            Rectangle:
+                # Colocar na Tela Inteira
+                size: self.size
+                pos: self.pos
+                source: "icones/bg1.png"
+
+        # Texto ID do Usuário
+        Label:
+            # Imagem do Plano de Fundo
+            canvas.before: 
+            # canvas.before: serve para colocar a imagem atrás do texto
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+                    source: "icones/botao_fino.png"
+            pos_hint: {"right": 0.85, "top": 0.95}
+            size_hint: 0.7, 0.2
+            bold: True
+            text: "Seu ID Único: 1"
+            id: id_vendedor
+
+        # Imagem Mudar Foto de Perfil
+        ImageButton:
+            pos_hint: {"right": 0.5, "top": 0.7}
+            size_hint: 0.5, 0.15
+            source: "icones/foto_perfil.png"
+            on_release: app.mudar_tela("foto_perfilpage")
+
+        # Texto Mudar Foto de Perfil
+        LabelButton:
+            pos_hint: {"right": 0.9, "top": 0.7}
+            size_hint: 0.5, 0.15
+            text: "Mudar Foto de Perfil"
+            on_release: app.mudar_tela("foto_perfilpage")
+
+        # Imagem Acompanhar Vendedor
+        ImageButton:
+            pos_hint: {"right": 0.5, "top": 0.5}
+            size_hint: 0.5, 0.15
+            source: "icones/adicionar_vendedor.png"
+            on_release: app.mudar_tela("adicionar_vendedorpage")
+
+        # Texto Acompanhar Vendedor
+        LabelButton:
+            pos_hint: {"right": 0.9, "top": 0.5}
+            size_hint: 0.5, 0.15
+            text: "Acompanhar Vendedor"
+            on_release: app.mudar_tela("adicionar_vendedorpage")
+
+        # Imagem Ver Todas as Vendas
+        ImageButton:
+            pos_hint: {"right": 0.5, "top": 0.3}
+            size_hint: 0.5, 0.15
+            source: "icones/vendas_empresa.png"
+            on_release: app.carregar_todas_vendas()
+
+        # Texto Ver Todas as Vendas
+        LabelButton:
+            pos_hint: {"right": 0.9, "top": 0.3}
+            size_hint: 0.5, 0.15
+            text: "Ver Todas as Vendas"
+            on_release: app.carregar_todas_vendas()
+
+        # Barra Inferior da Tela
+        FloatLayout:
+            pos_hint: {"right": 1, "top": 0.12}
+            size_hint: 1, 0.12
+
+            # Cor do Plano de Fundo
+            canvas:
+                Color:
+                    rgb: utils.get_color_from_hex("#006D7E")
+                Rectangle:
+                    # Colocar na Tela Inteira
+                    size: self.size
+                    pos: self.pos
+                    
+            # Botão Voltar
+            ImageButton:
+                pos_hint: {"right": 0.2, "top": 0.9}
+                size_hint: 0.2, 0.8
+                source: "icones/voltar.png"
+                on_release: app.mudar_tela("homepage")

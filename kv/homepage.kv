@@ -1,0 +1,70 @@
+<HomePage>:
+    FloatLayout:
+        # Imagem do Plano de Fundo
+        canvas:
+            Rectangle:
+                # Colocar na Tela Inteira
+                size: self.size
+                pos: self.pos
+                source: "icones/bg1.png"
+
+        # Texto Total de Vendas
+        Label:
+            # Imagem do Plano de Fundo
+            canvas.before: 
+            # canvas.before: serve para colocar a imagem atrás do texto
+                Rectangle:
+                    size: self.size
+                    pos: self.pos
+                    source: "icones/botao_fino.png"
+            pos_hint: {"right": 0.85, "top": 0.95}
+            size_hint: 0.7, 0.2
+            text: "Total de Vendas: R$1"
+            id: label_total_vendas
+            markup: True # Serve para Formatar partes do Texto de forma diferente
+            
+        # Lista de Vendas
+        ScrollView:
+            pos_hint: {"right": 1, "top": 0.75}
+            size_hint: 1, 0.63
+            GridLayout:
+                cols: 1
+                id: lista_vendas
+                # Parâmetros Padrões para um GridLayout dentro de um ScrollView
+                # Comentado ficaria o nome do argumento caso a rolagem fosse na horizontal
+                size_hint_y: None # size_hint_x 
+                spacing: 2, 2
+                height: self.minimum_height # width
+                row_default_height: "90dp" # col_default_width
+                row_force_default: True # col_force_default
+               
+        # Barra Inferior da Tela
+        GridLayout:
+            rows: 1
+            pos_hint: {"right": 1, "top": 0.12}
+            size_hint: 1, 0.12
+
+            # Cor do Plano de Fundo
+            canvas:
+                Color:
+                    rgb: utils.get_color_from_hex("#006D7E")
+                Rectangle:
+                    # Colocar na Tela Inteira
+                    size: self.size
+                    pos: self.pos
+
+            # Botão Adicionar Venda
+            ImageButton:
+                source: "icones/add.png"
+                # Funcionamento ao Clicar no Botão
+                on_release: app.mudar_tela("adicionar_vendaspage") # app: É uma palavra restrita e faz referência a Classe Principal do Aplicativo
+
+            # Botão Lista de Vendedores
+            ImageButton:
+                source: "icones/salesman.png"
+                on_release: app.mudar_tela("listar_vendedorespage")
+
+            # Botão Adicionar Venda
+            ImageButton:
+                source: "icones/settings.png"
+                on_release: app.mudar_tela("ajustespage")

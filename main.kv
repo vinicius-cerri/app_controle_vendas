@@ -1,0 +1,67 @@
+# GridLayout: layout em grade, onde os widgets são organizados em células de uma grade
+# retangular. Cada célula da grade pode conter um widget.
+
+# FloatLayout: layout baseado em coordenadas, onde pode-se definir explicitamente as posições
+# e tamanhos dos widgets usando coordenadas relativas ao canto superior esquerdo do layout.
+
+# Adicionar os Arquivos da Pasta kv
+#:include kv/homepage.kv
+#:include kv/ajustespage.kv
+#:include kv/adicionar_vendaspage.kv
+#:include kv/adicionar_vendedorpage.kv
+#:include kv/foto_perfilpage.kv
+#:include kv/listar_vendedorespage.kv
+#:include kv/todas_vendaspage.kv
+#:include kv/loginpage.kv
+#:include kv/vendas_outro_vendedorpage.kv
+# Importar a Biblioteca para Usar o Código Hexadecimal ao invés do RGB
+#:import utils kivy.utils
+# (Copiar na Linha de cima) No Python seria from kivy.utils import utils
+
+FloatLayout:
+    # Cor do Plano de Fundo
+    canvas:
+        Color:
+            rgb: utils.get_color_from_hex("#001824")
+        Rectangle:
+            # Colocar na Tela Inteira
+            size: self.size
+            pos: self.pos
+    # Logo da Hashtag
+    Image:
+        pos_hint: {"right": 1, "top": 0.9}
+        size_hint: 1, 0.2
+        source: "icones/hash.png"
+        id: foto_perfil
+    # Transformar em um Gerenciador de Telas
+    ScreenManager:
+        pos_hint: {"right": 1, "top": 0.7} # Definir a Posição
+        size_hint: 1, 0.7 # Definir o Tamanho
+        id: screen_manager
+        LoginPage:
+            name: "loginpage"
+            id: loginpage
+        HomePage:
+            name: "homepage"
+            id: homepage
+        AjustesPage:
+            name: "ajustespage"
+            id: ajustespage
+        AdicionarVendasPage:
+            name: "adicionar_vendaspage"
+            id: adicionar_vendaspage
+        AdicionarVendedorPage:
+            name: "adicionar_vendedorpage"
+            id: adicionar_vendedorpage
+        FotoPerfilPage:
+            name: "foto_perfilpage"
+            id: foto_perfilpage
+        ListarVendedoresPage:
+            name: "listar_vendedorespage"
+            id: listar_vendedorespage
+        TodasVendasPage:
+            name: "todas_vendaspage"
+            id: todas_vendaspage
+        VendasOutroVendedorPage:
+            name: "vendas_outro_vendedorpage"
+            id: vendas_outro_vendedorpage
